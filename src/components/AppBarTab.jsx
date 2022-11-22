@@ -1,11 +1,11 @@
-import { Pressable } from "react-native";
+import { Link } from "react-router-native";
 import { Subheading } from "./Text";
 
-const AppBarTab = ({ onPress, children }) => {
+const AppBarTab = ({ linkedTo, children }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Link to={linkedTo} style={{padding: 5, marginRight: 15}}>
       <Subheading>{children}</Subheading>
-    </Pressable>
+    </Link>
   );
 };
 

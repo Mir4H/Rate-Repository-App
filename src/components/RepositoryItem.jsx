@@ -1,16 +1,31 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import theme from "../theme";
+import { StyleSheet } from "react-native";
+import ViewCounts from "./ViewCounts";
+import ViewDetails from "./ViewDetails";
 
-const RepositoryItem = ({item}) => {
+const styles = StyleSheet.create({
+  flexContainer: {
+    display: "flex",
+    backgroundColor: theme.colors.offWhite,
+    paddingTop: 20,
+    paddingBottom: 10,
+  },
+  flexRow: {
+    flexDirection: "row",
+  },
+});
 
+const RepositoryItem = ({ item }) => {
   return (
-    <View>
-      <Text>Full Name: {item.fullName}</Text>
-      <Text>Description: {item.description}</Text>
-      <Text>Language: {item.language}</Text>
-      <Text>Stars: {item.stargazersCount}</Text>
-      <Text>Forks: {item.forksCount}</Text>
-      <Text>Reviews: {item.reviewCount}</Text>
-      <Text>Rating: {item.ratingAverage}</Text>
+    <View style={styles.flexContainer}>
+      <ViewDetails item={item}/>
+      <View style={styles.flexRow}>
+        <ViewCounts itemDetail={item.stargazersCount} itemName="Stars" />
+        <ViewCounts itemDetail={item.forksCount} itemName="Forks" />
+        <ViewCounts itemDetail={item.reviewCount} itemName="Reviews" />
+        <ViewCounts itemDetail={item.ratingAverage} itemName="Rating" />
+      </View>
     </View>
   );
 };

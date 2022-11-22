@@ -4,12 +4,15 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+//import theme from "../theme";
 import RepositoryItem from "./RepositoryItem";
 
 const styles = StyleSheet.create({
   separator: {
-    height: 10,
+    height: 5,
+    width: "100%",
   },
+
 });
 
 const repositories = [

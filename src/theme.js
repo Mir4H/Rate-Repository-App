@@ -5,7 +5,9 @@ const theme = {
       primary: '#0366d6',
       bar: '#24292e',
       offWhite: '#f2f4f5',
-      lightGrey: '#e1e4e8'
+      lightGrey: '#e1e4e8',
+      darkGrey: '#a0a1a3',
+      attention: '#de0d0d'
     },
     fontSizes: {
       body: 14,

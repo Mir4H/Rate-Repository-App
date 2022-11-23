@@ -3,7 +3,7 @@ import Text from "./Text";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  flexColumnBot: {
+  flexColumn: {
     flexDirection: "column",
     flexGrow: 1,
     justifyContent: "space-around",
@@ -19,7 +19,7 @@ const formatNumber = (num) => {
 
 const ViewCounts = ({ itemDetail, itemName }) => {
     return (
-      <View style={styles.flexColumnBot}>
+      <View style={styles.flexColumn}>
         <Text color="textSecondary" fontWeight="bold">
           {formatNumber(itemDetail)}
         </Text>

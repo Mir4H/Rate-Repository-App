@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flexRow: {
       flexDirection: "row",
     },
-    flexColumnTop: {
+    flexColumn: {
       flexDirection: "column",
       flexGrow: 0,
       alignItems: "flex-start",
@@ -34,7 +34,7 @@ const ViewDetails = ({item}) => {
           <View style={{ flexGrow: 0 }}>
             <Image style={styles.pic} source={{ uri: item.ownerAvatarUrl }} />
           </View>
-          <View style={styles.flexColumnTop}>
+          <View style={styles.flexColumn}>
             <View style={{ marginBottom: 10 }}>
               <Text color="textSecondary" fontWeight="bold">
                 {item.fullName}

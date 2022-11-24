@@ -1,5 +1,5 @@
 import { Link } from "react-router-native";
-import { Subheading } from "./Text";
+import { Subheading } from "../Text";
 
 const AppBarTab = ({ linkedTo, children }) => {
   return (

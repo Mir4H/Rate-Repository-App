@@ -19,4 +19,10 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
-// other queries...
+export const GET_USER = gql`{
+  me {
+    id
+    username
+  }
+}
+`;

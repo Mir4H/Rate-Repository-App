@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.flexContainer}>
+    <View testID="repositoryItem" style={styles.flexContainer}>
       <ViewDetails item={item}/>
       <View style={styles.flexRow}>
         <ViewCounts itemDetail={item.stargazersCount} itemName="Stars" />

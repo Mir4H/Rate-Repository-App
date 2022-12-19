@@ -1,8 +1,7 @@
-import {
-  render,
-  //screen
-} from "@testing-library/react-native";
+
+import { render } from '@testing-library/react-native';
 import { RepositoryListContainer } from "../components/RepositoryList";
+
 const formatNumber = (num) => {
   return num > 999 ? (num / 1000).toFixed(1) + "K" : num;
 };
@@ -56,7 +55,6 @@ describe("RepositoryList", () => {
       const { getAllByTestId } = render(
         <RepositoryListContainer repositories={repositories} />
       );
-      //screen.debug();
       const repositoryItems = getAllByTestId("repositoryItem");
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
@@ -96,3 +94,4 @@ describe("RepositoryList", () => {
     });
   });
 });
+

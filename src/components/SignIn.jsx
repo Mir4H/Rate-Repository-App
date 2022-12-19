@@ -32,14 +32,32 @@ const validationSchema = yup.object().shape({
   password: yup.string().required("Password is required"),
 });
 
-const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   return (
-    <View style={styles.flexColumn}>
-      <FormikTextInput name="username" placeholder="Username" />
-      <FormikTextInput secureTextEntry name="password" placeholder="Password" />
-      <Pressable style={styles.button} onPress={onSubmit}>
-        <Subheading>Sign In</Subheading>
-      </Pressable>
+    <View>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ handleSubmit }) => (
+          <View style={styles.flexColumn}>
+            <FormikTextInput name="username" placeholder="Username" />
+            <FormikTextInput
+              secureTextEntry
+              name="password"
+              placeholder="Password"
+            />
+            <Pressable
+              testID="button"
+              style={styles.button}
+              onPress={handleSubmit}
+            >
+              <Subheading>Sign In</Subheading>
+            </Pressable>
+          </View>
+        )}
+      </Formik>
     </View>
   );
 };
@@ -55,20 +73,12 @@ const SignIn = () => {
       await signIn({ username, password });
       navigate("../");
     } catch (error) {
-      Alert.alert("Something went wrong!", `${error}`)
+      Alert.alert("Something went wrong!", `${error}`);
       console.log(error);
     }
   };
 
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
-    </Formik>
-  );
+  return <SignInForm onSubmit={onSubmit} />;
 };
 
 export default SignIn;

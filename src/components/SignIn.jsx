@@ -27,11 +27,16 @@ export const SignInForm = ({ onSubmit }) => {
       >
         {({ handleSubmit }) => (
           <View style={styles.flexColumn}>
-            <FormikTextInput name="username" placeholder="Username" />
+            <FormikTextInput
+              name="username"
+              placeholder="Username"
+              style={styles.basicHeight}
+            />
             <FormikTextInput
               secureTextEntry
               name="password"
               placeholder="Password"
+              style={styles.basicHeight}
             />
             <Pressable
               testID="button"
@@ -70,6 +75,9 @@ const styles = StyleSheet.create({
   flexColumn: {
     flexDirection: "column",
     alignItems: "stretch",
+  },
+  basicHeight: {
+    height: 60,
   },
   button: {
     backgroundColor: theme.colors.primary,

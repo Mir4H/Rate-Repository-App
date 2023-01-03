@@ -12,7 +12,6 @@ const TextInput = ({ style, error, ...props }) => {
 const styles = StyleSheet.create({
   input: {
     backgroundColor: theme.colors.offWhite,
-    height: 60,
     padding: 10,
     marginHorizontal: 20,
     marginTop: 20,

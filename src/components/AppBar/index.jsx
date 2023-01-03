@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
   const { user, signOut } = useUserAuth();
-  console.log(user)
 
   const handleSignOut = async () => {
     try {

@@ -7,21 +7,6 @@ import * as yup from "yup";
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
 
-const styles = StyleSheet.create({
-  flexColumn: {
-    flexDirection: "column",
-    alignItems: "stretch",
-  },
-  button: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 5,
-    margin: 20,
-    alignItems: "center",
-  },
-});
-
 const initialValues = {
   username: "",
   password: "",
@@ -80,5 +65,20 @@ const SignIn = () => {
 
   return <SignInForm onSubmit={onSubmit} />;
 };
+
+const styles = StyleSheet.create({
+  flexColumn: {
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+  button: {
+    backgroundColor: theme.colors.primary,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 5,
+    margin: 20,
+    alignItems: "center",
+  },
+});
 
 export default SignIn;

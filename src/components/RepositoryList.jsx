@@ -3,14 +3,7 @@ import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
 import { useNavigate } from "react-router-native";
 
-const styles = StyleSheet.create({
-  separator: {
-    height: 5,
-    width: "100%",
-  },
-});
-
-const ItemSeparator = () => <View style={styles.separator} />;
+export const ItemSeparator = () => <View style={styles.separator} />;
 
 export const RepositoryListContainer = ({ repositories, navigate }) => {
   const repositoryNodes = repositories
@@ -42,5 +35,13 @@ const RepositoryList = () => {
     <RepositoryListContainer repositories={repositories} navigate={navigate} />
   );
 };
+
+
+const styles = StyleSheet.create({
+  separator: {
+    height: 5,
+    width: "100%",
+  },
+});
 
 export default RepositoryList;

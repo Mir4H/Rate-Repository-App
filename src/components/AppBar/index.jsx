@@ -4,16 +4,6 @@ import theme from "../../theme";
 import AppBarTab from "./AppBarTab";
 import useUserAuth from "../../hooks/useUser";
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Constants.statusBarHeight,
-    padding: 20,
-    backgroundColor: theme.colors.bar,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-});
-
 const AppBar = () => {
   const { user, signOut } = useUserAuth();
 
@@ -35,5 +25,16 @@ const AppBar = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Constants.statusBarHeight,
+    padding: 20,
+    backgroundColor: theme.colors.bar,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+});
+
 
 export default AppBar;

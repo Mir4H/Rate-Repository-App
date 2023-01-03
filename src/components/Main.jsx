@@ -7,14 +7,6 @@ import OneRepository from "./OneRepository";
 import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    flexShrink: 1,
-    backgroundColor: theme.colors.lightGrey,
-  },
-});
-
 const Main = () => {
   return (
     <View style={styles.container}>
@@ -28,5 +20,13 @@ const Main = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    flexShrink: 1,
+    backgroundColor: theme.colors.lightGrey,
+  },
+});
 
 export default Main;

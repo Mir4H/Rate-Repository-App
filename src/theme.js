@@ -13,6 +13,7 @@ const theme = {
     },
     fontSizes: {
       body: 14,
+      smallheading: 16,
       subheading: 20,
     },
    fonts: {

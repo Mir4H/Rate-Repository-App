@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
+  fontSizeSmallHeading: {
+    fontSize: theme.fontSizes.smallheading,
+  },
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
@@ -33,6 +36,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     color === "primary" && styles.colorPrimary,
     color === "offWhite" && styles.colorOffWhite,
     fontSize === "subheading" && styles.fontSizeSubheading,
+    fontSize === "smallheading" && styles.fontSizeSmallHeading,
     fontWeight === "bold" && styles.fontWeightBold,
     style,
   ];
@@ -41,6 +45,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
 };
 
 export const Subheading = ({ children }) => {
+  
   return (
     <Text fontWeight="bold" fontSize="subheading" color="offWhite">
       {children}

@@ -9,19 +9,30 @@ const AppBar = () => {
 
   const handleSignOut = async () => {
     try {
-      console.log("clicked signout")
+      console.log("clicked signout");
       await signOut();
-  } catch (error) {
+    } catch (error) {
       console.log(error);
-  }
-  }
+    }
+  };
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab linkedTo="/">Repositories</AppBarTab>
-        <AppBarTab linkedTo="/review">Create a review</AppBarTab>
-        {user ? <AppBarTab linkedTo="/signin" onPress={handleSignOut}>Sign Out</AppBarTab> : <AppBarTab linkedTo="/signin">Sign In</AppBarTab>}
+        {user ? (
+          <>
+          <AppBarTab linkedTo="/review">Create a review</AppBarTab>
+          <AppBarTab linkedTo="/signin" onPress={handleSignOut}>
+            Sign Out
+          </AppBarTab>
+          </>
+        ) : (
+          <>
+          <AppBarTab linkedTo="/signin">Sign In</AppBarTab>
+          <AppBarTab linkedTo="/signup">Sign up</AppBarTab>
+          </>
+        )}
       </ScrollView>
     </View>
   );
@@ -36,6 +47,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
 });
-
 
 export default AppBar;

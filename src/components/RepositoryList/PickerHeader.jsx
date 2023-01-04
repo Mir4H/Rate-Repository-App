@@ -6,10 +6,8 @@ import theme from "../../theme";
 
 const PickerHeader = ({ selection, setSelection, sorting }) => {
   const [visible, setVisible] = useState(false);
-
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
-
   const makeSelection = (value) => {
     setSelection(value);
     closeMenu();

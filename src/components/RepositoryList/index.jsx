@@ -1,10 +1,12 @@
-import { FlatList, View, StyleSheet, TouchableOpacity } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "../RepositoryItem";
 import useRepositories from "../../hooks/useRepositories";
-import { useNavigate } from "react-router-native";
 import PickerHeader from "./PickerHeader";
 import { Provider } from "react-native-paper";
 import { useState } from "react";
+import Search from "./Search";
+import React from "react";
+import { useDebounce } from 'use-debounce';
 
 export const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -26,53 +28,66 @@ const sorting = {
   },
 };
 
-export const RepositoryListContainer = ({
-  repositories,
-  navigate,
-  selection,
-  setSelection,
-}) => {
-  const repositoryNodes = repositories
+export class RepositoryListContainer extends React.Component {
+  renderHeader = () => {
+    const {
+      selection,
+      setSelection,
+      searchQuery,
+      setSearchQuery,
+    } = this.props;
+
+    return (
+      <>
+      <Search
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <PickerHeader
+        selection={selection}
+        setSelection={setSelection}
+        sorting={sorting}
+      />
+    </>
+    );
+  };
+
+  renderItem = ({item}) => {
+    return <RepositoryItem item={item} visible={false} />
+  }
+
+  render() {
+    const { repositories } = this.props
+    const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
-
-  return (
-    <Provider>
-      <FlatList
-        data={repositoryNodes}
-        ItemSeparatorComponent={ItemSeparator}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            key={item.key}
-            onPress={() => navigate(`/${item.id}`)}
-            activeOpacity={0.5}
-          >
-            <RepositoryItem item={item} visible={false} />
-          </TouchableOpacity>
-        )}
-        ListHeaderComponent={() => (
-          <PickerHeader
-            selection={selection}
-            setSelection={setSelection}
-            sorting={sorting}
-          />
-        )}
-      />
-    </Provider>
-  );
-};
+    return (
+      <Provider>
+        <FlatList
+          data={repositoryNodes}
+          ItemSeparatorComponent={ItemSeparator}
+          renderItem={this.renderItem}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </Provider>
+    );
+  }
+}
 
 const RepositoryList = () => {
   const [selection, setSelection] = useState(sorting.latest);
-  const navigate = useNavigate();
-  const { repositories } = useRepositories({ selection });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchValue] = useDebounce(searchQuery, 500);
+  const values = {...selection, searchKeyword: searchValue}
+  const { repositories } = useRepositories({values});
 
   return (
     <RepositoryListContainer
       repositories={repositories}
-      navigate={navigate}
       selection={selection}
       setSelection={setSelection}
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
     />
   );
 };

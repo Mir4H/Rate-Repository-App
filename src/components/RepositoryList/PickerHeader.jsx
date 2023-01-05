@@ -29,7 +29,7 @@ const PickerHeader = ({ selection, setSelection, sorting }) => {
         onDismiss={closeMenu}
         anchor={
           <Button textColor={theme.colors.textPrimary} onPress={openMenu}>
-            {selection.name} <AntDesign name="down" size={14} color="black" />
+            {selection.name}<AntDesign name="down" size={14} color="black" />
           </Button>
         }
       >

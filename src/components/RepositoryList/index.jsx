@@ -82,8 +82,6 @@ const RepositoryList = () => {
   const [searchValue] = useDebounce(searchQuery, 500);
   const variables = {...selection, searchKeyword: searchValue}
   const { repositories, fetchMore } = useRepositories({...variables, first: 8});
-  console.log("total", repositories?.totalCount)
-  console.log("fetched", repositories?.edges.length)
   
   const onEndReach = () => {
     fetchMore();

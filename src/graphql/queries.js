@@ -39,12 +39,25 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_USER = gql`
-  {
-    me {
-      id
-      username
+query Me($includeReviews: Boolean = false) {
+  me {
+    id
+    username
+    reviews @include(if: $includeReviews) {
+      edges {
+        node {
+          createdAt
+          id
+          rating
+          text
+          repository {
+            fullName
+          }
+        }
+      }
     }
   }
+}
 `;
 
 export const GET_REPOSITORY = gql`
@@ -83,30 +96,3 @@ query Repository($repositoryId: ID!, $first: Int, $after: String) {
   }
 }
 `;
-/*query ($repositoryId: ID!) {
-    repository(id: $repositoryId) {
-      fullName
-      description
-      forksCount
-      language
-      ownerAvatarUrl
-      ratingAverage
-      reviewCount
-      stargazersCount
-      url
-      reviews {
-        edges {
-          node {
-            createdAt
-            id
-            rating
-            text
-            user {
-              id
-              username
-            }
-          }
-        }
-      }
-    }
-  }*/

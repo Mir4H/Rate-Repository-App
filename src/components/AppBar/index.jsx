@@ -9,7 +9,6 @@ const AppBar = () => {
 
   const handleSignOut = async () => {
     try {
-      console.log("clicked signout");
       await signOut();
     } catch (error) {
       console.log(error);
@@ -23,6 +22,7 @@ const AppBar = () => {
         {user ? (
           <>
           <AppBarTab linkedTo="/review">Create a review</AppBarTab>
+          <AppBarTab linkedTo="/myreviews">My reviews</AppBarTab>
           <AppBarTab linkedTo="/signin" onPress={handleSignOut}>
             Sign Out
           </AppBarTab>

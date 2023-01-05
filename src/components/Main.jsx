@@ -8,6 +8,7 @@ import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 import ReviewForm from "./ReviewForm";
 import SignUpForm from "./SignUpForm";
+import UserReviews from "./UserReviews";
 
 const Main = () => {
   return (
@@ -19,6 +20,7 @@ const Main = () => {
         <Route path="/signup" element={<SignUpForm />} exact />
         <Route path="/review" element={<ReviewForm />} exact />
         <Route path="/:id" element={<OneRepository />} exact />
+        <Route path="/myreviews" element={<UserReviews />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </View>

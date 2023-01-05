@@ -18,9 +18,13 @@ const ReviewItem = ({ review }) => {
           </Text>
         </View>
         <View style={styles.flexColumn}>
-          <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
-            {review.user.username}
-          </Text>
+          {review.user ? (
+            <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
+              {review.user.username}
+            </Text>
+          ) : <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
+          {review.repository.fullName}
+        </Text>}
           <View style={{ marginBottom: 5 }}>
             <Text color="textSecondary" fontWeight="bold">
               {format(new Date(review.createdAt), "dd.MM.yyyy")}

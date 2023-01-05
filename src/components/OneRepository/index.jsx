@@ -9,7 +9,6 @@ import { ItemSeparator } from "../RepositoryList";
 const OneRepository = () => {
   const { id } = useParams();
   const { repository, fetchMore } = useRepository({ first: 7, repositoryId: id });
-  console.log(repository)
   const reviewsList = repository
   ? repository?.reviews.edges.map((edge) => edge.node)
   : [];

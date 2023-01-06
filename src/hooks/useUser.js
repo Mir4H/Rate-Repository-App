@@ -8,6 +8,7 @@ const useUserAuth = () => {
   const apolloClient = useApolloClient();
   const { loading, error, data } = useQuery(GET_USER, {
     fetchPolicy: "cache-and-network",
+    variables: { includeReviews: false },
   });
 
   const signOut = async () => {

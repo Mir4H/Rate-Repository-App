@@ -39,60 +39,67 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_USER = gql`
-query Me($includeReviews: Boolean = false) {
-  me {
-    id
-    username
-    reviews @include(if: $includeReviews) {
-      edges {
-        node {
-          createdAt
-          id
-          rating
-          text
-          repository {
-            fullName
+  query User($includeReviews: Boolean!, $first: Int, $after: String) {
+    me {
+      id
+      username
+      reviews(first: $first, after: $after) @include(if: $includeReviews) {
+        edges {
+          node {
+            createdAt
+            id
+            rating
+            text
+            repository {
+              id
+              fullName
+            }
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+          startCursor
+        }
+        totalCount
       }
     }
   }
-}
 `;
 
 export const GET_REPOSITORY = gql`
-query Repository($repositoryId: ID!, $first: Int, $after: String) {
-  repository(id: $repositoryId) {
-    fullName
-    description
-    forksCount
-    language
-    ownerAvatarUrl
-    ratingAverage
-    reviewCount
-    stargazersCount
-    url
-    reviews(first: $first, after: $after) {
-      totalCount
-      edges {
-        node {
-          createdAt
-          id
-          rating
-          text
-          user {
+  query Repository($repositoryId: ID!, $first: Int, $after: String) {
+    repository(id: $repositoryId) {
+      fullName
+      description
+      forksCount
+      language
+      ownerAvatarUrl
+      ratingAverage
+      reviewCount
+      stargazersCount
+      url
+      reviews(first: $first, after: $after) {
+        totalCount
+        edges {
+          node {
+            createdAt
             id
-            username
+            rating
+            text
+            user {
+              id
+              username
+            }
           }
+          cursor
         }
-        cursor
-      }
-      pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+        }
       }
     }
   }
-}
 `;

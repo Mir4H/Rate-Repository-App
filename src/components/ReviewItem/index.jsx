@@ -1,10 +1,10 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Text from "../Text";
-import { StyleSheet } from "react-native";
 import theme from "../../theme";
 import { format } from "date-fns";
+import Buttons from "./Buttons";
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, refetch }) => {
   return (
     <View style={styles.flexContainer}>
       <View style={styles.flexRow}>
@@ -18,13 +18,9 @@ const ReviewItem = ({ review }) => {
           </Text>
         </View>
         <View style={styles.flexColumn}>
-          {review.user ? (
-            <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
-              {review.user.username}
-            </Text>
-          ) : <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
-          {review.repository.fullName}
-        </Text>}
+          <Text fontWeight="bold" fontSize="smallheading" color="darkGrey">
+            {review.user ? review.user.username : review.repository.fullName}
+          </Text>
           <View style={{ marginBottom: 5 }}>
             <Text color="textSecondary" fontWeight="bold">
               {format(new Date(review.createdAt), "dd.MM.yyyy")}
@@ -33,6 +29,7 @@ const ReviewItem = ({ review }) => {
           <Text color="textSecondary">{review.text}</Text>
         </View>
       </View>
+      {review.repository ? <Buttons id={review.id} refetch={refetch} repo={review.repository}/> : null}
     </View>
   );
 };
@@ -48,7 +45,6 @@ const styles = StyleSheet.create({
   },
   flexColumn: {
     flexDirection: "column",
-    flexGrow: 0,
     alignItems: "flex-start",
     flexShrink: 1,
   },
@@ -60,6 +56,16 @@ const styles = StyleSheet.create({
     borderRadius: 50 / 2,
     justifyContent: "center",
     marginHorizontal: 10,
+  },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    margin: 20,
+  },
+  buttonRow: {
+    justifyContent: "space-around",
+    flexDirection: "row",
   },
 });
 

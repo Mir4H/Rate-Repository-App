@@ -8,3 +8,4 @@ Features:
 - View and sort list of all repositories
 - View detailed info and all reviews of a repository
 - Manage own reviews
+

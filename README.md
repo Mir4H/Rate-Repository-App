@@ -1,5 +1,5 @@
-# Rate-Repository-App
-Full Stack Open 2022
+# Rate Repository App
+Full Stack Open 2022 exercise | https://fullstackopen.com/en/part10
 
 An app that allows you to rate GitHub repositories.
 Features: 
